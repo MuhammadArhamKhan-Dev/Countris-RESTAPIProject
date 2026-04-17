@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Marcellus&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* outline: 1px solid red; */
+}
+html, body, #root {
+    height: 100%;
+}
+
+body{
+    --background-color: white;
+    --text-color: black;
+    --shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+}
+main, main.dark{
+    min-height: 100vh;
+}
+
+main, nav{
+    background-color: var(--background-color);
+    color: var(--text-color);
+    box-shadow: var(--shadow);
+}
+
+main.dark{
+  --background-color: hsl(216, 11%, 9%);
+  --text-color: white;
+  --shadow: 0 3px 8px rgba(255, 255, 255, 0.1);
+}
+
+nav.dark {
+  --background-color: #181c23;
+  --text-color: white;
+}
+
+.montserrat-heading {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    /* Bold */
+    font-style: normal;
+}
+
+.montserrat-body {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    /* Regular */
+    font-style: normal;
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+  background-color: rgb(219, 216, 216);
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    left: 150%;
+  }
+}
