@@ -15,9 +15,6 @@ body{
     --text-color: black;
     --shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
 }
-main, main.dark{
-    min-height: 100vh;
-}
 
 main, nav{
     background-color: var(--background-color);
