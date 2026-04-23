@@ -10,6 +10,10 @@ html, body, #root {
     height: 100%;
 }
 
+main{
+  height: calc(100vh - 88.8px);
+}
+
 body{
     --background-color: white;
     --text-color: black;
