@@ -11,12 +11,12 @@ html, body, #root {
 }
 
 main{
-  height: calc(100vh - 88.8px);
+  min-height: calc(100vh - 88.8px);
 }
 
 @media (max-width: 768px) {
   main{
-    height: calc(100vh - 107.51px);
+    min-height: calc(100vh - 107.51px);
   }
 }
 
