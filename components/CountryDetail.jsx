@@ -42,7 +42,12 @@ const CountryDetail = () => {
 
                 Promise.all(
                     data.borders.map((border) =>
-                        fetch(`https://restcountries.com/v3.1/alpha/${border}`)
+                        fetch(`https://restcountries.com/v5/alpha/${border}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${API_KEY}`,
+                        },
+                    })
                             .then((res) => res.json())
                             .then(([borderData]) => borderData.name.common)
                     )
