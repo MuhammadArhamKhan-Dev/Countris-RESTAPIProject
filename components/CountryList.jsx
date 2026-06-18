@@ -38,7 +38,7 @@ const CountryList = ({query = ''}) => {
                 .map((country, i) => (
 
                     <CountryCard key={i} name={country.names.common}
-                        flag={country.flags.svg}
+                        flag={country.flag.url_svg}
                         population={country.population.toLocaleString("en-UN")}
                         region={country.region}
                         capital={country.capitals?.[0]} />
