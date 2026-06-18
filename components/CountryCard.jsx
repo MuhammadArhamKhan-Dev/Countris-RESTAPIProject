@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 const CountryCard = ({name, flag, population, region, capital}) => {
     return (
-        <Link className={styles.card} to={`/${name.toLowerCase()}`}>
+        <Link className={styles.card} to={`/${name.toLowerCase().replace(/\s+/g, "-")}`}>
             <div className={styles.imageContainer}>
             <img src={flag} alt={name + "flag"} />
             </div>

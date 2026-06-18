@@ -12,6 +12,8 @@ const CountryDetail = () => {
 
     const { country } = useParams()
 
+    const countryName = country.replace(/-/g, " ")
+
     const [countries, setCountries] = useState()
     const [countryBorders, setBorders] = useState([])
     const [load, setLoad] = useState(true)
@@ -25,7 +27,7 @@ const CountryDetail = () => {
         setError(false)
 
         fetch(
-            `https://api.restcountries.com/countries/v5?filter=names.common:eq:${country}`,
+            `https://api.restcountries.com/countries/v5?filter=names.common:eq:${countryName}`,
             {
                 headers: {
                     Authorization: `Bearer ${API_KEY}`
