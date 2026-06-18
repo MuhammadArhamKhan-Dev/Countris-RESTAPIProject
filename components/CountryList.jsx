@@ -24,7 +24,6 @@ const CountryList = ({ query = "" }) => {
       );
 
       const res = await response.json();
-
       const countries =
         res?.data?.objects ??
         res?.objects ??
@@ -41,8 +40,9 @@ const CountryList = ({ query = "" }) => {
   fetchCountries();
 }, []);
 
-  const q = query.toLowerCase();
-
+const q = query.trim().toLowerCase();
+console.log("Query:", query);
+console.log(countries.length)
   return (
     <div className={styles.second}>
       {load
