@@ -27,13 +27,13 @@ const CountryDetail = () => {
         setError(false)
 
         fetch(
-            `https://api.restcountries.com/countries/v5?filter=names.common:eq:${countryName}`,
-            {
-                headers: {
-                    Authorization: `Bearer ${API_KEY}`
-                }
+        `https://api.restcountries.com/countries/v5/names.common/${countryName}`,
+        {
+            headers: {
+                Authorization: `Bearer ${API_KEY}`
             }
-        )
+        }
+    )
             .then(res => res.json())
             .then((res) => {
 
