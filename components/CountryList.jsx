@@ -11,33 +11,48 @@ const CountryList = ({ query = "" }) => {
   const [load, setLoad] = useState(true);
 
   useEffect(() => {
-  const fetchCountries = async () => {
-    try {
-      const response = await fetch(
-        "https://api.restcountries.com/countries/v5?limit=100",
-        // adding the Authorization header with the API key
-        {
-          headers: {
-            Authorization: `Bearer ${API_KEY}`,
-          },
-        }
+  Promise.all([
+    fetch(
+      "https://api.restcountries.com/countries/v5?limit=100&offset=0",
+      {
+        headers: {
+          Authorization: `Bearer ${API_KEY}`,
+        },
+      }
+    ).then(res => res.json()),
+
+    fetch(
+      "https://api.restcountries.com/countries/v5?limit=100&offset=100",
+      {
+        headers: {
+          Authorization: `Bearer ${API_KEY}`,
+        },
+      }
+    ).then(res => res.json()),
+
+    fetch(
+      "https://api.restcountries.com/countries/v5?limit=100&offset=200",
+      {
+        headers: {
+          Authorization: `Bearer ${API_KEY}`,
+        },
+      }
+    ).then(res => res.json())
+  ])
+    .then((results) => {
+      const allCountries = results.flatMap(
+        r => r?.data?.objects || []
       );
 
-      const res = await response.json();
-      const countries =
-        res?.data?.objects ??
-        res?.objects ??
-        [];
+      console.log("Countries loaded:", allCountries.length);
 
-      setCountries(countries);
+      setCountries(allCountries);
       setLoad(false);
-    } catch (err) {
-      console.error("API ERROR:", err);
+    })
+    .catch((err) => {
+      console.error(err);
       setLoad(false);
-    }
-  };
-
-  fetchCountries();
+    });
 }, []);
 
 const q = query.trim().toLowerCase();
