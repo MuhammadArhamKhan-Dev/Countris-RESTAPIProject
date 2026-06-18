@@ -14,7 +14,7 @@ const CountryList = ({ query = "" }) => {
   const fetchCountries = async () => {
     try {
       const response = await fetch(
-        "https://api.restcountries.com/countries/v5?limit=25&pretty=1",
+        "https://api.restcountries.com/countries/v5?limit=250",
         // adding the Authorization header with the API key
         {
           headers: {
