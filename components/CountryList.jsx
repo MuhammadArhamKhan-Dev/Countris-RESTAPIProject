@@ -14,7 +14,7 @@ const CountryList = ({ query = "" }) => {
   const fetchCountries = async () => {
     try {
       const response = await fetch(
-        "https://api.restcountries.com/countries/v5?limit=250",
+        "https://api.restcountries.com/countries/v5?limit=100",
         // adding the Authorization header with the API key
         {
           headers: {
@@ -25,14 +25,10 @@ const CountryList = ({ query = "" }) => {
 
       const res = await response.json();
 
-      console.log("FULL API RESPONSE:", res);
-
       const countries =
         res?.data?.objects ??
         res?.objects ??
         [];
-
-      console.log("PARSED COUNTRIES:", countries);
 
       setCountries(countries);
       setLoad(false);
