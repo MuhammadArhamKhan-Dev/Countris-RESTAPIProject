@@ -4,7 +4,7 @@ import styles from "./CountryList.module.css"
 import CountryCard from "./CountryCard"
 import Shimmer1 from "./Shimmer1"
 
-
+const API_KEY = process.env.RESTCOUNTRIES_API_KEY;
 const CountryList = ({query = ''}) => {
 
     const [countries, setCountries] = useState([])
