@@ -11,18 +11,38 @@ const CountryList = ({ query = "" }) => {
   const [load, setLoad] = useState(true);
 
   useEffect(() => {
-    fetch("https://api.restcountries.com/countries/v5?limit=100", {
-      headers: {
-        Authorization: `Bearer ${API_KEY}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        const data = res.data?.objects || res.objects || [];
-        setCountries(data);
-        setLoad(false);
-      });
-  }, []);
+  const fetchCountries = async () => {
+    try {
+      const response = await fetch(
+        "https://api.restcountries.com/countries/v5?limit=25&pretty=1",
+        {
+          headers: {
+            Authorization: `Bearer ${API_KEY}`,
+          },
+        }
+      );
+
+      const res = await response.json();
+
+      console.log("FULL API RESPONSE:", res);
+
+      const countries =
+        res?.data?.objects ??
+        res?.objects ??
+        [];
+
+      console.log("PARSED COUNTRIES:", countries);
+
+      setCountries(countries);
+      setLoad(false);
+    } catch (err) {
+      console.error("API ERROR:", err);
+      setLoad(false);
+    }
+  };
+
+  fetchCountries();
+}, []);
 
   const q = query.toLowerCase();
 
