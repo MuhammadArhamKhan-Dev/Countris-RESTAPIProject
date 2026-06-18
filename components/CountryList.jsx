@@ -11,7 +11,7 @@ const CountryList = ({query = ''}) => {
     const [load, setLoad] = useState(true)
 
     useEffect(() => {
-        fetch("https://api.restcountries.com/countries/v5?response_fields=name,flag,region,population,capitals,borders",
+        fetch("https://api.restcountries.com/countries/v5?response_fields=names,flag,region,population,capitals,borders",
             {
                 headers: {
                     'Authorization': `Bearer ${API_KEY}`
@@ -34,14 +34,14 @@ const CountryList = ({query = ''}) => {
                 load? Array.from({length: 8}).map((_, i) => <Shimmer1 key={i} />)
                : 
             
-            countries.filter((country)=>country.name.common.toLowerCase().includes(query) || country.region.toLowerCase().includes(query) )
+            countries.filter((country)=>country.names.common.toLowerCase().includes(query) || country.region.toLowerCase().includes(query) )
                 .map((country, i) => (
 
-                    <CountryCard key={i} name={country.name.common}
+                    <CountryCard key={i} name={country.names.common}
                         flag={country.flags.svg}
                         population={country.population.toLocaleString("en-UN")}
                         region={country.region}
-                        capital={country.capital?.[0]} />
+                        capital={country.capitals?.[0]} />
                 ))
             }
         
