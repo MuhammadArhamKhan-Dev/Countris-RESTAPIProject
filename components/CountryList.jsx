@@ -11,7 +11,7 @@ const CountryList = ({query = ''}) => {
     const [load, setLoad] = useState(true)
 
     useEffect(() => {
-        fetch("https://restcountries.com/v5/all?fields=name,flags,region,population,capital,borders",
+        fetch("https://api.restcountries.com/countries/v5?response_fields=name,flags,region,population,capital,borders",
             {
                 headers: {
                     'Authorization': `Bearer ${API_KEY}`
