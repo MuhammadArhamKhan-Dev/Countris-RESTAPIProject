@@ -65,7 +65,7 @@ const CountryDetail = () => {
         if (!countries?.borders?.length) return
 
         fetch(
-            `https://restcountries.com/v3.1/alpha?codes=${countries.borders.join(",")}`,
+            `https://restcountries.com/v5/alpha?codes=${countries.borders.join(",")}`,
             {
                 headers: {
                     'Authorization': `Bearer ${API_KEY}`
