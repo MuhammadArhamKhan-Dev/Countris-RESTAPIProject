@@ -11,20 +11,21 @@ const CountryList = ({query = ''}) => {
     const [load, setLoad] = useState(true)
 
     useEffect(() => {
-        fetch("https://api.restcountries.com/countries/v5?response_fields=names.common,flag.url_svg,region,population,capitals,borders",
-            {
-                headers: {
-                    'Authorization': `Bearer ${API_KEY}`
-                }
-            }
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                setCountries(data)
-                setLoad(false)
-            })
-
-    }, [])
+  fetch(
+    "https://api.restcountries.com/countries/v5?limit=100",
+    {
+      headers: {
+        Authorization: `Bearer ${API_KEY}`,
+      },
+    }
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      const data = res.data?.objects || [];
+      setCountries(data);
+      setLoad(false);
+    });
+}, []);
 
 
 
