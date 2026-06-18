@@ -35,14 +35,14 @@ const CountryList = ({query = ''}) => {
                 load? Array.from({length: 8}).map((_, i) => <Shimmer1 key={i} />)
                : 
             
-            countries.filter((country)=>country.names.common.toLowerCase().includes(query) || country.region.toLowerCase().includes(query) )
+            countries.filter((country)=>country.names?.common?.toLowerCase().includes(query) || country.region.toLowerCase().includes(query) )
                 .map((country, i) => (
 
-                    <CountryCard key={i} name={country.names.common}
-                        flag={country.flag.url_svg}
+                    <CountryCard key={i} name={country.names?.common}
+                        flag={country.flag?.url_svg}
                         population={country.population.toLocaleString("en-UN")}
                         region={country.region}
-                        capital={country.capitals?.[0]} />
+                        capital={country.capitals?.[0]?.name} />
                 ))
             }
         
